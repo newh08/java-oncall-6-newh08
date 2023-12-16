@@ -1,5 +1,9 @@
 package oncall.domain.date;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Day {
     private static final String WEEK_HOLIDAY_MESSAGE = "(휴일) ";
 
@@ -49,16 +53,13 @@ public class Day {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(month)
-                .append(" ")
-                .append(date)
-                .append(" ")
-                .append(dayOfWeek)
-                .append(" ");
+        List<String> stringBuffer = new ArrayList<>();
+        stringBuffer.add(month.toString());
+        stringBuffer.add(date.toString());
+        stringBuffer.add(dayOfWeek.toString());
         if (this.isWeekHoliday()) {
-            stringBuilder.append(WEEK_HOLIDAY_MESSAGE);
+            stringBuffer.add(WEEK_HOLIDAY_MESSAGE);
         }
-        return stringBuilder.toString();
+        return stringBuffer.stream().collect(Collectors.joining(" ",""," "));
     }
 }

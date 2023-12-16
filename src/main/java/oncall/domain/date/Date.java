@@ -1,6 +1,7 @@
 package oncall.domain.date;
 
 public class Date {
+    private static final String DATE_MESSAGE = "일";
     private final int date;
 
     public Date(int date) {
@@ -13,7 +14,7 @@ public class Date {
 
     @Override
     public String toString() {
-        return date + "일";
+        return date + DATE_MESSAGE;
     }
 
     @Override
