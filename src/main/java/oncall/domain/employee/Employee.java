@@ -6,4 +6,8 @@ public class Employee {
     public Employee(String name) {
         this.name = name;
     }
+
+    protected String getName() {
+        return name;
+    }
 }
