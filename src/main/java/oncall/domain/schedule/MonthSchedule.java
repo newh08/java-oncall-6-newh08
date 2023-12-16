@@ -29,6 +29,10 @@ public class MonthSchedule {
             newDaySchedule.set(indexOne, newDaySchedules.get(0));
             newDaySchedule.set(indexTwo, newDaySchedules.get(1));
         }
+        MonthSchedule newMonthSchedule = new MonthSchedule(month, newDaySchedule);
+        if (!newMonthSchedule.findContinuousWork().isEmpty()) {
+            adjustSchedule();
+        }
         return new MonthSchedule(month, newDaySchedule);
     }
 
