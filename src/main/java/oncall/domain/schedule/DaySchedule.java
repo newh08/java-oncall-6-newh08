@@ -26,4 +26,8 @@ public class DaySchedule {
         DaySchedule secondDaySchedule = new DaySchedule(otherDaySchedule.day, this.employee);
         return List.of(firstDaySchedule, secondDaySchedule);
     }
+
+    public String toString() {
+        return day.toString() + employee.getName();
+    }
 }

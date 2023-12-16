@@ -1,6 +1,8 @@
 package oncall.domain.date;
 
 public class Day {
+    private static final String WEEK_HOLIDAY_MESSAGE = "(휴일) ";
+
     private final Month month;
     private final Date date;
     private final DayOfWeek dayOfWeek;
@@ -31,5 +33,32 @@ public class Day {
 
     private boolean isHoliday() {
         return Holidays.checkHoliday(month, date);
+    }
+
+    private boolean isWeekHoliday() {
+        return !isWeekend() && isHoliday();
+    }
+
+    public Month getMonth() {
+        return month;
+    }
+
+    public int getTotalDate() {
+        return month.getTotalDate();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(month)
+                .append(" ")
+                .append(date)
+                .append(" ")
+                .append(dayOfWeek)
+                .append(" ");
+        if (this.isWeekHoliday()) {
+            stringBuilder.append(WEEK_HOLIDAY_MESSAGE);
+        }
+        return stringBuilder.toString();
     }
 }

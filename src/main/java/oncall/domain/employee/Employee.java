@@ -9,7 +9,7 @@ public class Employee {
         this.name = name;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 

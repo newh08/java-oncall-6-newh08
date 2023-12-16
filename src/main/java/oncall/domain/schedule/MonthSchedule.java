@@ -2,6 +2,7 @@ package oncall.domain.schedule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import oncall.domain.date.Month;
 
 public class MonthSchedule {
@@ -26,7 +27,7 @@ public class MonthSchedule {
             int indexTwo = daySchedules.indexOf(nextSameDateType);
             List<DaySchedule> newDaySchedules = daySchedule.changeEmployee(nextSameDateType);
             newDaySchedule.set(indexOne, newDaySchedules.get(0));
-            newDaySchedules.set(indexTwo, newDaySchedules.get(1));
+            newDaySchedule.set(indexTwo, newDaySchedules.get(1));
         }
         return new MonthSchedule(month, newDaySchedule);
     }
@@ -61,4 +62,13 @@ public class MonthSchedule {
         }
         return continuousWorkDaySchedule;
     }
+
+    @Override
+    public String toString() {
+        return daySchedules.stream()
+                .map(DaySchedule::toString)
+                .limit(month.getTotalDate())
+                .collect(Collectors.joining("\n"));
+    }
+
 }

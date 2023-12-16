@@ -10,6 +10,12 @@ public class Date {
     public Date makeNextDate() {
         return new Date(date + 1);
     }
+
+    @Override
+    public String toString() {
+        return date + "일";
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Date conpareDate) {

@@ -1,17 +1,16 @@
 package oncall.domain.employee;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class EmployeeGenerator {
-    public static List<WeekWorkEmployee> generateWeekWorkEmployees(String input) {
-        return Arrays.stream(input.split(","))
+    public static List<WeekWorkEmployee> generateWeekWorkEmployees(List<String> input) {
+        return input.stream()
                 .map(WeekWorkEmployee::new)
                 .toList();
     }
 
-    public static List<WeekendWorkEmployee> generateWeekendWorkEmployees(String input) {
-        return Arrays.stream(input.split(","))
+    public static List<WeekendWorkEmployee> generateWeekendWorkEmployees(List<String> input) {
+        return input.stream()
                 .map(WeekendWorkEmployee::new)
                 .toList();
     }
