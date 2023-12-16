@@ -19,4 +19,8 @@ public enum Month {
         this.totalDate = totalDate;
     }
 
+    public int getTotalDate() {
+        return totalDate;
+    }
+
 }
