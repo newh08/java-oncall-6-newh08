@@ -1,6 +1,6 @@
 package oncall.domain.schedule;
 
-import oncall.domain.date.DateType;
+import java.util.List;
 import oncall.domain.date.Day;
 import oncall.domain.employee.Employee;
 
@@ -19,5 +19,11 @@ public class DaySchedule {
 
     public boolean isWeek() {
         return day.checkDateType().isWeek();
+    }
+
+    public List<DaySchedule> changeEmployee(DaySchedule otherDaySchedule) {
+        DaySchedule firstDaySchedule = new DaySchedule(this.day, otherDaySchedule.employee);
+        DaySchedule secondDaySchedule = new DaySchedule(otherDaySchedule.day, this.employee);
+        return List.of(firstDaySchedule, secondDaySchedule);
     }
 }
