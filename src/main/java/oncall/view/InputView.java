@@ -26,7 +26,18 @@ public class InputView {
         if (!inputMessage.contains(DELIMITER)) {
             throw new MyIllegalArgumentException(ErrorMessage.WRONG_DELIMITER);
         }
-        return viewConverter.convertToInputMonthAndDayDto(inputMessage.split(DELIMITER));
+        String[] splitInput = inputMessage.split(DELIMITER);
+        validateMonthIsNumber(splitInput);
+
+        return viewConverter.convertToInputMonthAndDayDto(splitInput);
+    }
+
+    private static void validateMonthIsNumber(String[] splitInput) {
+        try {
+            Integer.parseInt(splitInput[0]);
+        } catch (NumberFormatException e) {
+            throw new MyIllegalArgumentException(ErrorMessage.NOT_NUMBER);
+        }
     }
 
     public List<String> readWeekWorkEmployee() {
