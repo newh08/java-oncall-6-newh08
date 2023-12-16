@@ -11,6 +11,10 @@ public class Day {
         this.dayOfWeek = dayOfWeek;
     }
 
+    public Day makeNextDay() {
+        return new Day(month, date.makeNextDate(), dayOfWeek.getNextDayOfWeek());
+    }
+
     public DateType checkDateType() {
         if (isWeekend()) {
             return DateType.WEEKEND;
